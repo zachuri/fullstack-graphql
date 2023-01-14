@@ -32,7 +32,7 @@ const Dog: React.FC<Props> = ({ dog }) => {
                 cache.writeQuery({
                   query: GET_DOGS,
                   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-                  data: { dogs: dogs.filter((dog: { id: unknown; }) => dog.id !== removeDog.id) },
+                  data: { dogs: dogs.filter((dog: { id: number; }) => dog.id !== removeDog.id) },
                 });
               },
             })
