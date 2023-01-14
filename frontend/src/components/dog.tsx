@@ -22,6 +22,7 @@ const Dog: React.FC<Props> = ({ dog }) => {
 
         {/* Button to remove dog */}
         <button
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={() =>
             removeDog({
               variables: { removeDogId: dog.id },
@@ -30,7 +31,8 @@ const Dog: React.FC<Props> = ({ dog }) => {
                 const { dogs } = cache.readQuery({ query: GET_DOGS });
                 cache.writeQuery({
                   query: GET_DOGS,
-                  data: { dogs: dogs.filter((dog) => dog.id !== removeDog.id) },
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+                  data: { dogs: dogs.filter((dog: { id: unknown; }) => dog.id !== removeDog.id) },
                 });
               },
             })

@@ -26,6 +26,7 @@ const Form = () => {
   };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(addDog)} className="my-5 flex flex-col border">
       <label className="my-5 text-xl">Dog Name</label>
       <input

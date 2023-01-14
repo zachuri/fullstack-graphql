@@ -13,6 +13,7 @@ const client = new ApolloClient({
         fields: {
           dogs: {
             merge(existing, incoming) {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-return
               return incoming;
             },
           },
