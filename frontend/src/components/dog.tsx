@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { TrashIcon } from "../components/icons";
@@ -26,7 +25,14 @@ const Dog: React.FC<Props> = ({ dog }) => {
           onClick={() =>
             removeDog({
               variables: { removeDogId: dog.id },
-              refetchQueries: [{ query: GET_DOGS }],
+              // refetchQueries: [{ query: GET_DOGS }],
+              update(cache, { data: { removeDog } }) {
+                const { dogs } = cache.readQuery({ query: GET_DOGS });
+                cache.writeQuery({
+                  query: GET_DOGS,
+                  data: { dogs: dogs.filter((dog) => dog.id !== removeDog.id) },
+                });
+              },
             })
           }
         >

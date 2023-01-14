@@ -7,7 +7,19 @@ import "../styles/globals.css";
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          dogs: {
+            merge(existing, incoming) {
+              return incoming;
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 const MyApp: AppType = ({ Component, pageProps }) => {
