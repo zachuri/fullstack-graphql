@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Clients from "../components/Clients";
 
 const Home: NextPage = () => {
   return (
@@ -19,12 +18,18 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
+              href="/dogs"
             >
-              <h3 className="text-2xl font-bold">Dogs</h3>
+              <h3 className="text-2xl font-bold">View Dogs</h3>
+              <div className="text-lg">View the name of doggos</div>
+            </Link>
+            <Link
+              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+              href="https://create.t3.gg/en/introduction"
+            >
+              <h3 className="text-2xl font-bold">Owners</h3>
               <div className="text-lg">
-                <Clients />
+                View the name of owners for each dog
               </div>
             </Link>
           </div>
